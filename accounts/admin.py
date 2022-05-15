@@ -10,7 +10,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['username','email', 'first_name', 'last_name']
     fieldsets = (
         (None, {'fields': ('username','email', 'password')}),
-        (_('Personal Info'), {'fields': ('first_name','last_name',)}),
+        (_('Personal Info'), {'fields': ('first_name','last_name','phone_number')}),
         (
             _('Permissions'),
             {'fields': ('is_active', 'is_staff', 'is_superuser')}

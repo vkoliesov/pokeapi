@@ -80,7 +80,11 @@ WSGI_APPLICATION = 'pokeapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
+        'NAME': 'pokeapi',
+        'USER': 'pokeapi_user',
+        'PASSWORD': 'supersecretpassword',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
     }
 }
 

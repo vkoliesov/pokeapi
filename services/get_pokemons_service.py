@@ -6,3 +6,7 @@ def get_pokemons():
     resp = requests.get(url)
 
     return resp.json()['results']
+
+pokemons = get_pokemons()
+
+print(pokemons, type(pokemons))

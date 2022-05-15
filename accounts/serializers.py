@@ -1,3 +1,4 @@
+from random import choices
 from rest_framework import serializers
 
 from django.contrib.auth import get_user_model, authenticate
@@ -6,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from services.get_pokemons_service import get_pokemons
 
 
-class UserRegisterSerializer(serializers.ModelField):
+class UserSerializer(serializers.ModelSerializer):
     """Serializer for user register"""
 
     class Meta:
@@ -48,14 +49,13 @@ class AuthTokenSerializer(serializers.Serializer):
         attrs['user'] = user
         return attrs
 
-    
+
 class UserProfileSerializer(serializers.ModelSerializer):
     """User profile serializer with all fields"""
-    pokemons = serializers.SerializerMethodField(method_name=get_pokemons, many=True)
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'email', 'first_name', 'last_name', 'phone_number', 'pokemons')
+        fields = ('username', 'email', 'first_name', 'last_name', 'phone_number')
 
     def update(self, instance, validated_data):
         """Update a user, setting the password correctly and return it"""
